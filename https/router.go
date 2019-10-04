@@ -40,15 +40,11 @@ func Serve() {
 	r := gin.Default()
 	r.Use(cors.Default())
 
-	r.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"https://www.tonychouteau.fr"},
-	}))
-
 	r.GET("/connect", connect)
 	r.GET("/refresh/:id/:x/:y", refresh)
 
-	err := http.ListenAndServe(":8084", r)
-	//err := http.ListenAndServeTLS(":8084", "/etc/letsencrypt/live/www.domain.com/fullchain.pem", "/etc/letsencrypt/live/www.domain.com/privkey.pem", r)
+	//err := http.ListenAndServe(":8084", r)
+	err := http.ListenAndServeTLS(":8084", "/etc/letsencrypt/live/www.domain.com/fullchain.pem", "/etc/letsencrypt/live/www.domain.com/privkey.pem", r)
 
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
