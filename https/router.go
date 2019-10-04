@@ -19,8 +19,8 @@ func connect(c *gin.Context) {
 
 func refresh(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	x, _ := strconv.Atoi(c.Param("x"))
-	y, _ := strconv.Atoi(c.Param("y"))
+	x, _ := strconv.ParseFloat(c.Param("x"), 64)
+	y, _ := strconv.ParseFloat(c.Param("y"), 64)
 
 	others, count := manager.Refresh(id, x, y)
 
