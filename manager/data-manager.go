@@ -71,7 +71,7 @@ func Refresh(id int, x, y float64) (PlayerList, int) {
 	go func() {
 		var refreshedPlayer PlayerList
 		for i := range players {
-			if float64(time.Now().Sub(players[i].time))*math.Pow(10, -9) < 2 {
+			if float64(time.Now().Sub(players[i].time))*math.Pow(10, -9) < 7 {
 				refreshedPlayer = append(refreshedPlayer, players[i])
 			}
 		}
